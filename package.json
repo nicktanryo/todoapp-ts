@@ -5,6 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "start": "nodemon src/server.ts",
+    "prodStart": "ts-node src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "install-client": "cd client && npm install",
     "build": "cd client && npm run build",
