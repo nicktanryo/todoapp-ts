@@ -8,6 +8,5 @@ setup client side
 ### `npm start`
 
 setup server side
-### `cd server/`
 ### `npm install`
 ### `npm start`
