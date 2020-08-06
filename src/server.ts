@@ -52,15 +52,9 @@ app.use("/api", apiRoute)
 if (process.env.NODE_ENV === "production") {
     app.use(express.static('client/build'));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, "../", 'client', 'build', 'index.html')); // relative path
-    });
-    // app.get('/login', (req, res) => {
-    //     res.sendFile(path.join(__dirname, "../", 'client', 'build', 'index.html')); // relative path
-    // });
-    // app.get('/register', (req, res) => {
-    //     res.sendFile(path.join(__dirname, "../", 'client', 'build', 'index.html')); // relative path
-    // });
+    app.get('*', (req: Express.Request, res: Express.Response) => {
+        (res as any).sendFile(path.join(__dirname, "../", 'client', 'build', 'index.html')); // relative path
+    })
 }
 
 const PORT: number | string = process.env.PORT || 5000
