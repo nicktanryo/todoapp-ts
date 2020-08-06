@@ -1,0 +1,38 @@
+{
+  "name": "todolist-server",
+  "version": "1.0.0",
+  "description": "todolist server side",
+  "main": "server.ts",
+  "scripts": {
+    "start": "nodemon src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-client": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run install-client && npm run build"
+  },
+  "author": "Nicholas Tanryo",
+  "license": "ISC",
+  "engines": {
+    "node": "12.16.3"
+  },
+  "dependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.7",
+    "@types/express-session": "^1.17.0",
+    "@types/mongoose": "^5.7.32",
+    "@types/node": "^14.0.26",
+    "@types/passport": "^1.0.4",
+    "@types/passport-local": "^1.0.33",
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.9.25",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
