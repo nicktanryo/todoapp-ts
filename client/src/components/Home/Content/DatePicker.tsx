@@ -22,6 +22,7 @@ interface Props {
 
 export default function MaterialUIPickers({ deadline, setDeadline }: Props) {
     const classes = useStyles()
+
     const handleDateChange = (date: Date | null) => {
         setDeadline(date);
     }
