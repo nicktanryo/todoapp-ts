@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { makeStyles, Theme, Grid, Paper } from "@material-ui/core"
+import React, { useState, useEffect } from "react";
+import { makeStyles, Theme, Grid, Paper } from "@material-ui/core";
 
-import AddTodoForm from './AddTodoForm'
-import TodoList from './TodoList'
+import AddTodoForm from "./AddTodoForm";
+import TodoList from "./TodoList";
 
-import todolistService from "../../../services/todolist"
+import todolistService from "../../../services/todolist";
 
 export interface CTodoListContext {
-    todolist: Array<any>
-    setTodolist: React.Dispatch<React.SetStateAction<any[]>>
+    todolist: Array<any>;
+    setTodolist: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
-export const TodoListContext = React.createContext<CTodoListContext | undefined>(undefined)
+export const TodoListContext = React.createContext<
+    CTodoListContext | undefined
+>(undefined);
 
 const useStyles = makeStyles((theme: Theme) => ({
     container: {
@@ -19,38 +21,42 @@ const useStyles = makeStyles((theme: Theme) => ({
         alignItems: "flex-start",
         justifyContent: "center",
         paddingTop: theme.spacing(8),
-        width: "100%",
-        height: "100vh"
+        paddingBottom: theme.spacing(8),
     },
     content: {
-        maxWidth: "500px"
+        maxWidth: "500px",
     },
     paper: {
-        padding: theme.spacing(3)
-    }
-}))
+        padding: theme.spacing(3),
+    },
+}));
 
 export default function Content(): JSX.Element {
-    const classes = useStyles()
+    const classes = useStyles();
 
-    const [todolist, setTodolist] = useState<Array<any>>([])
+    const [todolist, setTodolist] = useState<Array<any>>([]);
 
     useEffect(() => {
         async function getdata() {
-            const { isAuthenticated, data } = await todolistService.get()
-            if (isAuthenticated) setTodolist(data)
+            const { isAuthenticated, data } = await todolistService.get();
+            if (isAuthenticated) setTodolist(data);
         }
-        getdata()
+        getdata();
         return function cleanup() {
-            setTodolist([])
-        }
-    }, [])
+            setTodolist([]);
+        };
+    }, []);
 
     return (
         <TodoListContext.Provider value={{ todolist, setTodolist }}>
-            <Paper>
+            <Paper elevation={0}>
                 <div className={classes.container}>
-                    <Grid container direction="column" justify="center" className={classes.content}>
+                    <Grid
+                        container
+                        direction="column"
+                        justify="center"
+                        className={classes.content}
+                    >
                         <Paper className={classes.paper} elevation={8}>
                             <TodoList todolist={todolist} />
                             <Paper className={classes.paper} elevation={6}>
@@ -61,5 +67,5 @@ export default function Content(): JSX.Element {
                 </div>
             </Paper>
         </TodoListContext.Provider>
-    )
+    );
 }
