@@ -1,15 +1,15 @@
-import React from 'react'
-import { Typography, Link } from "@material-ui/core"
+import React from "react";
+import { Typography, Link } from "@material-ui/core";
 
 export default function Copyright(): JSX.Element {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
+            {"Created by : "}
             <Link color="inherit" href="https://www.github.com/nicktanryo">
                 Nicholas Tanryo
-            </Link>{' '}
+            </Link>{" "}
             {new Date().getFullYear()}
-            {'.'}
+            {"."}
         </Typography>
-    )
+    );
 }
