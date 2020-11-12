@@ -20,11 +20,12 @@ const useStyles = makeStyles((theme: Theme) => ({
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "center",
-        paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8),
+        height: "100%",
     },
     content: {
         maxWidth: "500px",
+        marginTop: theme.spacing(8),
+        marginBottom: theme.spacing(8),
     },
     paper: {
         padding: theme.spacing(3),
@@ -49,22 +50,20 @@ export default function Content(): JSX.Element {
 
     return (
         <TodoListContext.Provider value={{ todolist, setTodolist }}>
-            <Paper elevation={0}>
-                <div className={classes.container}>
-                    <Grid
-                        container
-                        direction="column"
-                        justify="center"
-                        className={classes.content}
-                    >
-                        <Paper className={classes.paper} elevation={8}>
-                            <TodoList todolist={todolist} />
-                            <Paper className={classes.paper} elevation={6}>
-                                <AddTodoForm />
-                            </Paper>
+            <Paper elevation={0} className={classes.container}>
+                <Grid
+                    container
+                    direction="column"
+                    justify="center"
+                    className={classes.content}
+                >
+                    <Paper className={classes.paper} elevation={8}>
+                        <TodoList todolist={todolist} />
+                        <Paper className={classes.paper} elevation={6}>
+                            <AddTodoForm />
                         </Paper>
-                    </Grid>
-                </div>
+                    </Paper>
+                </Grid>
             </Paper>
         </TodoListContext.Provider>
     );
